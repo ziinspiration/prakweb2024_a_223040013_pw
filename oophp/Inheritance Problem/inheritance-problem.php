@@ -25,9 +25,9 @@ class Product
     {
         $str = "{$this->tipe} : {$this->judul} | {$this->getLabel()} (Rp. {$this->harga})";
         if ($this->tipe == "Komik") {
-            $str .= " ~{$this->jmlHalaman}";
+            $str .= " - {$this->jmlHalaman} Halaman";
         } else if ($this->tipe == "Game") {
-            $str .= " ~{$this->waktuMain}";
+            $str .= " ~ {$this->waktuMain} Jam";
         }
 
         return $str;
@@ -45,8 +45,8 @@ class CetakInfoProduct
     }
 }
 
-$product1 = new Product("Naruto", "Masashi Kishimoto", "Shonen Jump", 30000, 100, 0, "Komik");
-$product2 = new Product("Uncharted", "Neil Druckmann", "Sony Computer", 250000, 0, 50, "Game");
+$product1 = new Product("Komik", "Naruto", "Masashi Kishimoto", "Shonen Jump", 30000, 100, 0,);
+$product2 = new Product("Game", "Uncharted", "Neil Druckmann", "Sony Computer", 250000, 0, 50,);
 
 echo $product1->getInfoLengkap();
 echo "<br>";
