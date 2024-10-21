@@ -7,15 +7,15 @@ class About extends Contoller
         $data['nama'] = $nama;
         $data['pekerjaan'] = $pekerjaan;
         $data['umur'] = $umur;
-        $this->view('templates/header', $data);
+        $this->view('template/header', $data);
         $this->view('about/index', $data);
-        $this->view('templates/footer');
+        $this->view('template/footer');
     }
     public function page()
     {
         $data['judul'] = 'Page';
-        $this->view('templates/header', $data);
+        $this->view('template/header', $data);
         $this->view('about/page');
-        $this->view('templates/footer');
+        $this->view('template/footer');
     }
 }
