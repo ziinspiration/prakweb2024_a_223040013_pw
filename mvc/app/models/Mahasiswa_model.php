@@ -24,7 +24,6 @@ class Mahasiswa_model
 
     public function tambahDataMahasiswa($data)
     {
-        // Memperbaiki query untuk menambahkan mahasiswa
         $query = "INSERT INTO mahasiswa (id, nama, nrp, email, jurusan) VALUES (NULL, :nama, :nrp, :email, :jurusan)";
 
         $this->db->query($query);
@@ -32,6 +31,17 @@ class Mahasiswa_model
         $this->db->bind(':nrp', $data['nrp']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':jurusan', $data['jurusan']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function hapusDataMahasiswa($id)
+    {
+        $query = "DELETE FROM mahasiswa WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind(':id', $id);
 
         $this->db->execute();
 
