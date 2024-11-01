@@ -50,7 +50,6 @@ class Mahasiswa_model
 
     public function ubahDataMahasiswa($data)
     {
-        // Pastikan semua data yang diperlukan ada
         if (!isset($data['id'], $data['nama'], $data['nrp'], $data['email'], $data['jurusan'])) {
             throw new Exception("Data tidak lengkap untuk melakukan update");
         }
@@ -72,5 +71,14 @@ class Mahasiswa_model
         $this->db->execute();
 
         return $this->db->rowCount();
+    }
+
+    public function cariDataMahasiswa()
+    {
+        $keyword = $_POST["keyword"];
+        $query = "SELECT * FROM mahasiswa WHERE nama LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
     }
 }
